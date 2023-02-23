@@ -32,7 +32,6 @@ class ChatConsumer(JsonWebsocketConsumer):
             )
 
     def receive_json(self, content, **kwargs):
-        #메세지를 group_send 시 현 유저의 username을 같이 전달토록 함
         user=self.scope["user"]
 
         _type = content["type"]
