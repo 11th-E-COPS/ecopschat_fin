@@ -16,8 +16,6 @@ Websocket Echo..
     };
 
     ws.onmessage  = (event) => {
-        //웹소켓서버로부터 메세지 받으면 event.data속성에 수신 data 저장
-        //EchoConsumer 클래스에서 문자열 응답을 주므로 event.data는 문자열
         const message = event.data;
         console.log("message received:",message);
     };
@@ -26,7 +24,6 @@ Websocket Echo..
         console.error("websocket error");
     };
 
-    //웹소켓 끊기면 발생
     ws.onclose = (event) => {
         if(event.wasClean) {
             console.log("Disconnected by ws.close()");
