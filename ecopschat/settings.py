@@ -14,7 +14,6 @@ from pathlib import Path
 import dj_database_url
 import django_heroku
 from environ import Env
-import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -51,13 +50,12 @@ if "CHANNEL_LAYER_REDIS_URL" in env:
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.setdefault('DJANGO_SECRET_KEY', 'django-insecure-ccpa_dgd-*m0a)#nd#u&bhrt&$#i5&u*eu&l4$au9+z-748(&0')
-
+SECRET_KEY = 'django-insecure-ccpa_dgd-*m0a)#nd#u&bhrt&$#i5&u*eu&l4$au9+z-748(&0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.setdefault('DJANGO_DEBUG', "True"))
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
 
 
 # Application definition
@@ -75,7 +73,6 @@ INSTALLED_APPS = [
     "django_bootstrap5",
     "chat",
     "accounts",
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +84,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 django_heroku.settings(locals())
 ROOT_URLCONF = 'ecopschat.urls'
@@ -119,12 +115,8 @@ ASGI_APPLICATION = 'ecopschat.asgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ecopschat',
-        'USER': 'name',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -161,14 +153,12 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+STATIC_URL = 'static/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
