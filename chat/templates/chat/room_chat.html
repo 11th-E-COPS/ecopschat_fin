@@ -43,10 +43,6 @@
                 </div>
             <hr class="my-3"/>
             <a href="{% url 'chat:index' %}" class="btn btn-primary"> 대기실로 이동</a>
-{#            {% if request.user == room.owner %}#}
-                {# 채팅방 소유자한테만 삭제 버튼 노출 #}
-{#                <a href ="{% url "chat:room_delete" room_pk %}" class="btn btn-danger">채팅방 삭제하기</a>#}
-{#            {% endif %}#}
             </div>
         </div>
     </div>
@@ -88,7 +84,7 @@
             }
 
             const wrapper = document.createElement("div");
-            {#주의: innerHTML은 유저의 HTML이 그대로 상대에 전달되어 수행 -> 보안 위험#}
+
             wrapper.textContent = message+footer;
             element.appendChild(wrapper);
 
@@ -105,7 +101,6 @@
 
             const { message } = props;
             console.log("웹소켓으로 전송할 메세지 :", message);
-            {#this.append_message(message);#}
 
             this.ws.send(JSON.stringify({
                 type : "chat.message",
