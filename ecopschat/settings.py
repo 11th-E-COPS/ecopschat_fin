@@ -54,9 +54,10 @@ SECRET_KEY = 'django-insecure-ccpa_dgd-*m0a)#nd#u&bhrt&$#i5&u*eu&l4$au9+z-748(&0
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+ALLOWED_HOSTS = ['localhost:8000','.herokuapp.com','']
 
-ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
-
+# DEBUG = True
+# ALLOWED_HOSTS = '*'
 
 # Application definition
 

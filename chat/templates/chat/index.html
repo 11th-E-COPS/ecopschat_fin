@@ -1,14 +1,21 @@
 {% extends "chat/base.html" %}
 {% block content %}
+
  <h1>채팅방 목록 </h1>
  <ul>
+
+
+ <h4 class="mt-5 pt-5 text-info border-top fw-bold"> ✉ Chat List </h4>
+
+ <ul class="mb-4">
+
  {% for room in room_list %}
      <li>
-        <a href="{% url 'chat:room_chat' room.pk %}">
-            {{ room.name }}>
+        <a href="{% url 'chat:room_chat' room.pk %} " class="fs-5 mt-5 text-info text-decoration-none">
+            {{ room.name }} ➡
         </a>
      </li>
  {% endfor %}
  </ul>
-    <a href="{% url 'chat:room_new' %}">새 채팅방 만들기</a>
+    <a href="{% url 'chat:room_new' %}" class="fs-4 mt-5 text-info text-decoration-none fw-bold"> ✉ Start a NEW Chat </a>
 {% endblock %}

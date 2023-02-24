@@ -1,10 +1,32 @@
 {% extends "accounts/base.html" %}
 
-{% block content %}
-    <h2>{{ user.username }}'s 프로필</h2>
+{% block extra-style %}
+<style>
+    .borderbox {
+        border-color: rgb(224, 224, 224);
+        border-style:double;
+        border-radius: 0.8em;
+        padding: 0.4em;
+    }
+</style>
 
-    <ul>
+{% endblock %}
+
+{% block content %}
+
+
+    <div>
         <li>username: {{ user.username }}</li>
         <li>last_login: {{ user.last_login }}</li>
+
+<div class="borderbox">
+    <h3 class="p-4 text-info fw-bold ">{{ user.username }} 's profile 📝</h3>
+
+    <ul class="fs-5 mt-4 text-info text-decoration-none fw-bold">
+        <li>UserName : {{ user.username }}</li>
+        <li>Last Login : {{ user.last_login }}</li>
+
     </ul>
+</div>
+    </div>
 {% endblock %}

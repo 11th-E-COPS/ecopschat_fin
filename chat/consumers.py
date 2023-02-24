@@ -1,9 +1,15 @@
 from asgiref.sync import async_to_sync
-from channels.generic.websocket import JsonWebsocketConsumer
+from channels.generic.websocket import JsonWebsocketConsumer, WebsocketConsumer
 
 from chat.models import Room
 
+class Hello(WebsocketConsumer):
+    def connect(self):
+        super().connect()
 
+        user=self.scope["user"]
+        message = f"Hello, {user.username}, "
+        self.send(message)
 class ChatConsumer(JsonWebsocketConsumer):
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -55,3 +61,4 @@ class ChatConsumer(JsonWebsocketConsumer):
             "message":message_dict["message"],
             "sender": message_dict["sender"],
         })
+

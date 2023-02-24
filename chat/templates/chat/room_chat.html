@@ -3,7 +3,7 @@
 {% block extra-style %}
 <style>
     .chat-message > div {
-        background-color: #3b3b3d;
+        background-color: #17A2B8;
         color: #e1e1e1;
         border-radius: 0.8em;
         padding: 0.4em;
@@ -17,7 +17,7 @@
         text-align: right;
      }
     .chat-message.me >div{
-        background-color: #1f8cff;
+        background-color: #17A2B8;
         color: #fff;
         text-align: left;
     }
@@ -25,12 +25,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container my-5">
+   <div class="container my-5">
         <div class ="row">
             <div class="col-sm-12">
                 <div class="card" style="height: 600px; ">
-                    <div class="card-header">
-                        채팅방:{{ room.name }}
+                    <div class="card-header text-info fw-bold fs-5">
+                        채팅방 : {{ room.name }}
                     </div>
                     <div class="card-body overflow-hidden">
                         <div id="chat_messages" class="w-100 h-100 border-0 overflow-scroll"></div>
@@ -42,7 +42,11 @@
                     </div>
                 </div>
             <hr class="my-3"/>
+
             <a href="{% url 'chat:index' %}" class="btn btn-primary"> 대기실로 이동</a>
+
+            <a href="{% url 'chat:index' %}" class="btn btn-info btn-lg text-white fw-bold">대기실로 이동</a>
+
             </div>
         </div>
     </div>

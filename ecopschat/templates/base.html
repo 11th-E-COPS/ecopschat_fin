@@ -4,35 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width", user-scalable="no",initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>django channels</title>
+    <title>OUNCEs</title>
+
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    {% block extra-style %}{% endblock %}
+    {% block extra-style %}
+
+    <style>
+
+    </style>
+    {% endblock %}
+
 </head>
+
 <body>
 
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            OUNCEs
-        </a>
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="{% url 'chat:index' %}" class="nav-link px-2 link-dark">채팅 </a> </li>
-        </ul>
-        <div class="col-md-3 text-end">
-            {% if not user.is_authenticated %}
-                <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary me-2">로그인</a>
-                <a href="{% url 'accounts:signup' %}" class="btn btn-primary">회원가입</a>
-            {% else %}
-                <a href="{% url 'accounts:profile' %}" class="btn btn-outline-primary me-2">프로필</a>
-                <a href="{% url 'accounts:logout' %}" class="btn btn-primary">로그아웃</a>
-            {% endif %}
+        <div>
+            <a href="/" class="d-flex align-items-center col-md-5 mb-md-0 text-info text-decoration-none fs-1 fw-bold">
+                OUNCEs
+            </a>
+            <h5 class="d-flex align-items-center col-md-5 mb-2 mb-md-0 text-info text-decoration-none fw-bold">3IDIOTS</h5>
         </div>
     </header>
+        <ul class="nav m-auto mb-2 justify-content-center mb-md-0 fw-bold">
+            <li><a href="{% url 'chat:index' %}" class="nav-link link-dark text-info fs-4 ps-5 mb-2 "> 💎 Chat with Your ARTISTS 💎 </a> </li>
+        </ul>
+        <div class="d-flex m-auto align-items-center col-md-3 text-end mb-5 fw-bold">
+                {% if not user.is_authenticated %}
+                <a href="{% url 'accounts:login' %}" class="d-inline-block btn btn-outline-info m-5 btn-lg fw-bold">Log In</a>
+                <a href="{% url 'accounts:signup' %}" class="btn btn-info btn-lg text-white fw-bold">Sign Up</a>
+                {% else %}
+                <a href="{% url 'accounts:profile' %}" class="d-inline-block btn btn-outline-info m-5 btn-lg fw-bold">Profile</a>
+                <a href="{% url 'accounts:logout' %}" class=" btn btn-info btn-lg text-white fw-bold">Log Out</a>
+                {% endif %}
+        </div>
     {% bootstrap_messages %}
 
 {% block content %}
-    <h3>{{ form.name }}</h3>
+    <h3 class="text-info fw-bold ">{{ form.name }}</h3>
 
     <div class ="card">
         {% if form_name %}
@@ -42,7 +53,7 @@
             <form action="" method="post" novalidate>
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                <input type="submit" class="btn btn-primary" {% if submit_label %} value="{{ submit_label }}"{% endif %}/>
+                <input type="submit" class="btn btn-info btn-lg text-white fw-bold" {% if submit_label %} value="{{ submit_label }}"{% endif %}/>
             </form>
         </div>
     </div>
